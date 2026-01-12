@@ -1,4 +1,4 @@
-# PDF Field Extractor
+# Paper Extractor
 
 Extract specific information from your PDF documents using AI. Upload a PDF, tell the app what information you need, and it will automatically find it and show you exactly where it came from in the document.
 
@@ -20,7 +20,7 @@ The application uses a two-stage AI process:
 You can view three panels side-by-side:
 
 - **Left**: Your original PDF pages displayed as images
-- **Middle**: The full derendered text extracted from the PDF (with highlighting when you hover over results)
+- **Middle**: The full derendered text extracted from the PDF
 - **Right**: Your extracted data with values and snippets
 
 ## What You'll Need
@@ -52,7 +52,7 @@ Open your terminal (Command Prompt on Windows, Terminal on Mac/Linux) and naviga
 
 ```bash
 # Navigate to the project directory
-cd paperextraction
+cd paperextractor
 
 # Install all dependencies (this may take a minute)
 npm install
@@ -119,15 +119,15 @@ Navigate to: **http://localhost:5173**
 3. **Click "Extract Fields"**
 
    - Processing typically takes 10-30 seconds depending on PDF size
-   - The AI analyzes your document in two stages
+   - The AI analyses your document in two stages
    - Progress is shown with a loading indicator
 
 4. **Review Results**
 
    - **Results Panel** (right): Shows all extracted values
-   - **OCR Text Viewer** (middle): Full text content with search highlighting
+   - **Derendered Text Viewer** (middle): Full text content with search highlighting
    - **Page Viewer** (left): Your original PDF rendered as images
-   - Hover over any result to see it highlighted in the OCR text
+   - Hover over any result to see it highlighted in the text
    - Click the copy icon to copy any value to your clipboard
 
 5. **Export Your Data**
@@ -155,6 +155,7 @@ If a field appears multiple times in your document (e.g., multiple dates), all i
 
 - Each value comes with its own snippet
 - Click "Show all values" to expand and see everything
+  > **Note**: Not guaranteed
 
 ## Tips for Best Results
 
@@ -186,21 +187,6 @@ Add context when:
 - **Low-quality scans** may produce unreliable results
 
 ## Common Questions
-
-### How accurate is the extraction?
-
-Accuracy depends on document quality and field specificity. Digital PDFs typically achieve 95%+ accuracy for clearly defined fields.
-
-### Can I process multiple PDFs at once?
-
-Not currently. Each PDF must be processed individually. See "Future Enhancements" in CLAUDE.md for planned features.
-
-### What happens to my PDFs?
-
-- PDFs are temporarily uploaded to your local server
-- Sent to Google Gemini API for processing
-- Automatically deleted from both your server and Gemini after extraction
-- See Google's privacy policy for how they handle uploaded files
 
 ### Is my data secure?
 
@@ -318,7 +304,7 @@ For developers and those interested in the technical implementation:
 ### Project Structure
 
 ```
-paperextraction/
+paperextractor/
 ├── client/          # React frontend (port 5173)
 │   └── src/
 │       ├── App.jsx                # Main app logic
@@ -351,8 +337,6 @@ Response: {
 
 1. **Stage 1**: PDF → Markdown (preserves structure, tables, layout)
 2. **Stage 2**: Markdown → Structured JSON (extracts fields)
-
-See `CLAUDE.md` for comprehensive developer documentation.
 
 ## Command Reference
 
@@ -403,17 +387,6 @@ npm run start
 | Response Format    | JSON                                      |
 | Export Formats     | JSON, CSV                                 |
 
-## Browser Compatibility
-
-Tested and working on:
-
-- Chrome 90+
-- Firefox 88+
-- Safari 14+
-- Edge 90+
-
-Requires JavaScript enabled.
-
 ## Privacy & Data Handling
 
 ### What Gets Uploaded
@@ -440,52 +413,15 @@ Requires JavaScript enabled.
 
 ## Future Enhancements
 
-Planned features (contributions welcome!):
+Planned features:
 
+- Handling of figures
 - Batch processing (multiple PDFs)
 - Visual bounding boxes showing exact extraction locations on PDF
 - Field templates (save/load common configurations)
 - Excel export format
 - Field validation rules
 - Comparison mode (extract from multiple PDFs, compare side-by-side)
-- Custom AI models
-- Offline processing options
-
-See `CLAUDE.md` for the full roadmap.
-
-## Support & Contributing
-
-### Getting Help
-
-- Check this README first
-- Review `CLAUDE.md` for technical details
-- Check browser console (F12) for frontend errors
-- Check terminal output for server errors
-- Search GitHub Issues for similar problems
-
-### Reporting Bugs
-
-Include:
-
-- Operating system and version
-- Node.js version (`node --version`)
-- Steps to reproduce
-- Error messages (screenshot or copy/paste)
-- Example PDF (if possible, with sensitive data removed)
-
-### Contributing
-
-Contributions welcome! Areas where help is needed:
-
-- Testing with various PDF types
-- UI/UX improvements
-- Documentation improvements
-- Bug fixes
-- New features from the roadmap
-
-## License
-
-[Add your license here - e.g., MIT, Apache 2.0, etc.]
 
 ## Acknowledgments
 
